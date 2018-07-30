@@ -1,55 +1,21 @@
-# Snake Lake
+My attempt at making a trivia show in one week!
 
-Multiplayer snake!
+Gutted code from gameshow (https://github.com/timothypratley/gameshow)
+My thanks for giving a place to start off with.
+--------------------------------
 
-Play: http://timothypratley.github.io/snakelake
+This project uses websockets to allow multiple users to sign on and attempt to answer questions as prompted
 
-Screencast: https://www.youtube.com/watch?v=3NZJjwv6yy0
+Requirements
+-Must let users login, assign their own teams
+-users can buzz in to answer a question
+-users can answer via text should they not get buzzer
+-admins can select questions
+-admins can assign points
+-categories must be selectable from the main screen
+-questions will be displayed sequentially after a category is selected
 
 
-## Overview
+--------------------------------
 
-Avoid colliding with other snakes.
-Invite your friends to battle.
-
-## Development
-
-To run the server
-
-    lein run
-
-To get an interactive development environment run:
-
-    lein figwheel
-
-and open your browser at [localhost:3000](http://localhost:3000/).
-This will auto compile and send all changes to the browser without the
-need to reload. After the compilation process is complete, you will
-get a Browser Connected REPL. An easy way to try it is:
-
-To clean all compiled files:
-
-    lein clean
-
-To create a production build run:
-
-    lein with-profile uberjar do clean, cljsbuild once min
-
-And open your browser in `resources/public/index.html`. You will not
-get live reloading, nor a REPL.
-
-## Deploy
-
-To deploy the server:
-
-    git push heroku master
-
-To deploy the static assets:
-
-    ./deploy.sh
-
-## License
-
-Copyright © 2016 Timothy Pratley
-
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+Feel free to reuse this code for your own projects!

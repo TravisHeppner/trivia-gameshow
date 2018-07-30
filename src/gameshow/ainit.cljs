@@ -1,3 +1,3 @@
-(ns snakelake.ainit)
+(ns gameshow.ainit)
 
 (enable-console-print!)

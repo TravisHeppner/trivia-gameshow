@@ -1,4 +1,4 @@
-(ns snakelake.model
+(ns gameshow.model
   (:require
     [reagent.core :as reagent]))
 (def adjectives

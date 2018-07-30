@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/snakelake-standalone.jar clojure.main -m snakelake.server.main $PORT
+web: java $JVM_OPTS -cp target/gameshow-standalone.jar clojure.main -m gameshow.server.main $PORT

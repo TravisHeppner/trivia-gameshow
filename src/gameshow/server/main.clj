@@ -1,7 +1,7 @@
-(ns snakelake.server.main
+(ns gameshow.server.main
   (:require
     [org.httpkit.server :as server]
-    [snakelake.server.routes :as routes]
+    [gameshow.server.routes :as routes]
     [environ.core :as environ])
   (:gen-class))
 

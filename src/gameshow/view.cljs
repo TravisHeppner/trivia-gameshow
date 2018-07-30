@@ -1,40 +1,16 @@
-(ns snakelake.view
+(ns gameshow.view
   (:require
     [clojure.string :as string]
     [goog.events :as events]
     [goog.events.KeyCodes :as KeyCodes]
-    [snakelake.model :as model]
-    [snakelake.communication :as communication]
+    [gameshow.model :as model]
+    [gameshow.communication :as communication]
     [goog.crypt :as crypt]
     [goog.dom.forms :as forms]
     [goog.string :as gstring]
     [goog.string.format])
   (:import
     [goog.crypt Md5]))
-
-(defn dir [e [dx dy]]
-  (.preventDefault e)
-  (communication/dir dx dy))
-
-(defn click [e]
-  (let [elem (.-target e)
-         r (.getBoundingClientRect elem)
-         left (.-left r)
-         top (.-top r)
-         width (.-width r)
-         height (.-height r)
-         ex (.-clientX e)
-         ey (.-clientY e)
-         x (- ex left (/ width 2))
-         y (- ey top (/ height 2))]
-    (dir e
-         (if (> (js/Math.abs y) (js/Math.abs x))
-           (if (pos? y)
-             [0 1]
-             [0 -1])
-           (if (pos? x)
-             [1 0]
-             [-1 0])))))
 
 (defn login-form []
       [:div
@@ -122,16 +98,24 @@
 ;    "Your browser does not support the audio element."]
 ;   [:div "Ahrix - Nova [NCS Release]"]])
 
+(defn board [{:keys [uid username team world] :as app}]
+  [:div
+   (for [[category-prompt questions :as category] (:questions world)]
+     [:button (cond-> {:on-click (fn [_] (communication/select-question category))
+                       :type     :button
+                       :class    "btn btn-primary"
+                       :style    {:size 20}}
+                      (= 0 (count questions)) (assoc :disabled true :class "btn btn-secondary"))
+      (name category-prompt)])])
+
 (defn testing [{:keys [uid username team world] :as app}]
   [:div
-
-
    [:p (str "UID: " uid)]
    [:p (str "USERNAME:" username)]
    [:p (str "TEAM: " team)]
-   (map (fn [p] [:p (str "PLAYER: " p)]) (:players world))
-
-
+   ;(map (fn [p] [:p (str "PLAYER: " p)]) (:players world))
+   [:p (str (:questions world))]
+   [:p (str (:current-question world))]
    [:div (str app)]])
 
 (defn main []
@@ -142,7 +126,8 @@
     [login-form]
     [scores @model/app-state]
     [testing @model/app-state]
-    ;[board @model/app-state]
+
+    [board @model/app-state]
     [:p {:style {:inline true}} "Multiplayer - invite your friends."]
-    [:p " Steer with the arrow keys, WASD, or click/touch the side of the board."]
+    [:p "Join by going to 192.168.1.108:3000"]
     ]])

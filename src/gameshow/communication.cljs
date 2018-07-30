@@ -1,8 +1,8 @@
-(ns snakelake.communication
+(ns gameshow.communication
   (:require
-    [snakelake.ainit]
-    [snakelake.model :as model]
-    [snakelake.config :as config]
+    [gameshow.ainit]
+    [gameshow.model :as model]
+    [gameshow.config :as config]
     [taoensso.sente :as sente]))
 
 (defn get-chsk-url
@@ -20,9 +20,6 @@
 (defonce chsk-send! (:send-fn channel-socket))
 (defonce chsk-state (:state channel-socket))
 
-(defn dir [dx dy]
-  (chsk-send! [:snakelake/dir [dx dy]]))
-
 (defmulti event-msg-handler :id)
 
 (defmethod event-msg-handler :default [{:as ev-msg :keys [event]}]
@@ -36,20 +33,24 @@
 (defmethod event-msg-handler :chsk/recv [{:as ev-msg :keys [?data]}]
   (model/world! (second ?data)))
 
-(defn send-username []
-  (chsk-send! [:snakelake/username (:username @model/app-state)]))
-
-(defn send-team []
-  (chsk-send! [:snakelake/team (:team @model/app-state)]))
-
 (defmethod event-msg-handler :chsk/handshake [{:as ev-msg :keys [?data]}]
   (let [[?uid ?csrf-token ?handshake-data] ?data]
     (println "Handshake:" ?data)
     (model/uid! ?uid)
     (send-username)))
 
+(defn select-question [category]
+  (chsk-send! [:gameshow/select-question category]))
+
+(defn send-username []
+  (chsk-send! [:gameshow/username (:username @model/app-state)]))
+
+(defn send-team []
+  (chsk-send! [:gameshow/team (:team @model/app-state)]))
+
+
 (defonce router
   (sente/start-client-chsk-router! ch-chsk event-msg-handler))
 
 (defn respawn []
-  (chsk-send! [:snakelake/respawn]))
+  (chsk-send! [:gameshow/respawn]))

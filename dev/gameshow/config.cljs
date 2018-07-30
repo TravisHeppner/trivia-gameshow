@@ -1,3 +1,3 @@
-(ns snakelake.config)
+(ns gameshow.config)
 
 (def server "localhost:3000")

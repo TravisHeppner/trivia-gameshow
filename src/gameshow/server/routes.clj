@@ -1,6 +1,6 @@
-(ns snakelake.server.routes
+(ns gameshow.server.routes
   (:require
-    [snakelake.server.model :as model]
+    [gameshow.server.model :as model]
     [ring.middleware.defaults :as defaults]
     [ring.middleware.reload :as reload]
     [ring.middleware.cors :as cors]
@@ -43,20 +43,25 @@
 (defmethod event :default [{:as ev-msg :keys [event]}]
   (println "Unhandled event: " event))
 
-(defmethod event :snakelake/username [{:as ev-msg :keys [event uid ?data]}]
+(defmethod event :gameshow/username [{:as ev-msg :keys [event uid ?data]}]
   (do
     (timbre/info "Username event: " uid event ?data)
     (model/username uid ?data)))
 
-(defmethod event :snakelake/team [{:as ev-msg :keys [event uid ?data]}]
+(defmethod event :gameshow/team [{:as ev-msg :keys [event uid ?data]}]
   (do
     (timbre/info "team event: " uid event ?data)
     (model/team uid ?data)))
 
-(defmethod event :snakelake/respawn [{:as ev-msg :keys [event uid ?data]}]
+(defmethod event :gameshow/respawn [{:as ev-msg :keys [event uid ?data]}]
   (do
     (timbre/info "Respawn event: " uid event)
     (model/enter-game :uid uid :in-game? true)))
+
+(defmethod event :gameshow/select-question [{:keys [?data] :as ev-msg}]
+  (do
+    (timbre/info "select-question event: " ?data)
+    (model/select-question ?data)))
 
 (defmethod event :chsk/uidport-open [{:keys [uid client-id]}]
   (do
@@ -78,7 +83,7 @@
 
 (defn broadcast []
   (doseq [uid (:any @(:connected-uids channel-socket))]
-    ((:send-fn channel-socket) uid [:snakelake/world @model/world])))
+    ((:send-fn channel-socket) uid [:gameshow/world @model/world])))
 
 (defn ticker []
   (while true

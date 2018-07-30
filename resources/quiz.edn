@@ -1,0 +1,9 @@
+{:test-questions
+ [{:question "What is the average flightspeed of a swallow?"
+   :picture  "monty-python.jgp"
+   :answers  ["African" "European"]}
+  {:question "What is the meanin to life the universe and everything?"
+   :answers  ["42"]}]
+ :more-questions
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]}]}

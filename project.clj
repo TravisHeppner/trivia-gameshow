@@ -1,6 +1,6 @@
-(defproject snakelake "0.1.0-SNAPSHOT"
-  :description "Snakelake is a multiplayer snake game"
-  :url "http://github.com/timothypratley/snakelake"
+(defproject gameshow "0.1.0-SNAPSHOT"
+  :description "This is a trivia gameshow."
+  :url "https://github.com/TravisHeppner/gameshow"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
@@ -30,9 +30,9 @@
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
-  :main snakelake.server.main
+  :main gameshow.server.main
 
-  :uberjar-name "snakelake-standalone.jar"
+  :uberjar-name "gameshow-standalone.jar"
 
   :profiles
   {:dev {:env {:dev? "true"}
@@ -40,9 +40,9 @@
                      [{:id "dev"
                        :source-paths ["src" "dev"]
                        :figwheel {}
-                       :compiler {:main snakelake.main
+                       :compiler {:main gameshow.main
                                   :asset-path "js/compiled/out"
-                                  :output-to "resources/public/js/compiled/snakelake.js"
+                                  :output-to "resources/public/js/compiled/gameshow.js"
                                   :output-dir "resources/public/js/compiled/out"
                                   :source-map-timestamp true}}]}}
    :uberjar {:hooks [leiningen.cljsbuild]
@@ -50,8 +50,8 @@
              :cljsbuild {:builds
                          [{:id "min"
                            :source-paths ["src" "prod"]
-                           :compiler {:main snakelake.main
-                                      :output-to "resources/public/js/compiled/snakelake.js"
+                           :compiler {:main gameshow.main
+                                      :output-to "resources/public/js/compiled/gameshow.js"
                                       :optimizations :advanced
                                       :pretty-print false}}]}}}
 

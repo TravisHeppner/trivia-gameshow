@@ -1,11 +1,17 @@
-(ns snakelake.server.model
+(ns gameshow.server.model
   (:require
     [clojure.core.memoize :as memo]
     [clojure.set :as set]
-    [taoensso.timbre :as timbre]))
+    [taoensso.timbre :as timbre]
+    [clojure.java.io :as io]))
+
+(def quiz-resource
+  (io/resource "quiz.edn"))
 
 (defonce world
-  (ref {:players {}}))
+         (ref {:players   {}
+               :questions (clojure.edn/read-string (slurp quiz-resource))}))
+
 
 (def colors
   #{"#181818" "#282828" "#383838" "#585858"
@@ -33,11 +39,11 @@
 
 (defn new-player [world uid username team in-game?]
   (let [points 3]
-       (-> world
-           (assoc-in [:players uid] {:points points
-                                     :username username
-                                     :team team
-                                     :active in-game?}))))
+    (-> world
+        (assoc-in [:players uid] {:points   points
+                                  :username username
+                                  :team     team
+                                  :active   in-game?}))))
 
 (defn enter-game
   [& {:keys [uid in-game?]}]
@@ -64,5 +70,12 @@
   (update world :players #(dissoc % uid)))
 (defn remove-player [uid]
   (do
-    (println "removing player "uid)
+    (println "removing player " uid)
     (dosync (alter world remove-player* uid))))
+
+(defn select-question [[category questions]]
+  (do
+    (timbre/info "selecting a question.")
+    (dosync
+      (alter world update-in [:questions category] rest)
+      (alter world assoc :current-question (first questions)))))
