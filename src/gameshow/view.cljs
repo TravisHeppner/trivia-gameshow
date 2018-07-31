@@ -45,16 +45,12 @@
        " "
        [:button {:type "submit"}
         "Join game!"]
+
        [:br]
        [:br]]])])
 
 (defn get-active [[uid {:keys[points username team active]}]]
   [active (string/lower-case username)])
-
-(defn md5-hash [s]
-  (let [md5 (Md5.)]
-    (.update md5 (string/trim s))
-    (crypt/byteArrayToHex (.digest md5))))
 
 (defn team->color [team]
   (as-> team x
@@ -100,6 +96,7 @@
 
 (defn board [{:keys [uid username team world] :as app}]
   [:div
+   [:p " "][:p " "]
    (for [[category-prompt questions :as category] (:questions world)]
      [:button (cond-> {:on-click (fn [_] (communication/select-question category))
                        :type     :button

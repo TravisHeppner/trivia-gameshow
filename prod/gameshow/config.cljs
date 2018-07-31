@@ -1,3 +1,3 @@
 (ns gameshow.config)
 
-(def server "gameshow.herokuapp.com")
+(def server "kncagameshow.herokuapp.com")

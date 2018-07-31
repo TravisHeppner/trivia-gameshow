@@ -33,17 +33,18 @@
 (defmethod event-msg-handler :chsk/recv [{:as ev-msg :keys [?data]}]
   (model/world! (second ?data)))
 
-(defmethod event-msg-handler :chsk/handshake [{:as ev-msg :keys [?data]}]
-  (let [[?uid ?csrf-token ?handshake-data] ?data]
-    (println "Handshake:" ?data)
-    (model/uid! ?uid)
-    (send-username)))
 
 (defn select-question [category]
   (chsk-send! [:gameshow/select-question category]))
 
 (defn send-username []
   (chsk-send! [:gameshow/username (:username @model/app-state)]))
+
+(defmethod event-msg-handler :chsk/handshake [{:as ev-msg :keys [?data]}]
+  (let [[?uid ?csrf-token ?handshake-data] ?data]
+    (println "Handshake:" ?data)
+    (model/uid! ?uid)
+    (send-username)))
 
 (defn send-team []
   (chsk-send! [:gameshow/team (:team @model/app-state)]))
