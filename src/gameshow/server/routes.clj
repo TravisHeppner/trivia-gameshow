@@ -73,7 +73,7 @@
     (timbre/info "select-question event: " ?data)
     (model/select-question ?data)))
 
-(defmethod event :gameshow/score-player [{:keys [?data :as ev-msg]}]
+(defmethod event :gameshow/score-player [{:keys [?data] :as ev-msg}]
   (do
     (timbre/info "scoring player" ?data)
     (model/score-player ?data)))
