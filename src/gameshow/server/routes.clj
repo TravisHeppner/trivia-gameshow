@@ -72,10 +72,11 @@
   (do
     (timbre/info "select-question event: " ?data)
     (model/select-question ?data)))
-(defmethod event :gameshow/score-player [{:keys [uid :as ev-msg]}]
+
+(defmethod event :gameshow/score-player [{:keys [?data :as ev-msg]}]
   (do
-    (timbre/info "scoring player" uid)
-    (model/score-player uid)))
+    (timbre/info "scoring player" ?data)
+    (model/score-player ?data)))
 
 (defmethod event :chsk/uidport-open [{:keys [uid client-id]}]
   (do

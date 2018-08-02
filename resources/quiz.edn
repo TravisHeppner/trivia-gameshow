@@ -9,23 +9,23 @@
  :Category2
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]
-   :poins 10}]
+   :points 10}]
  :Category3
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]
-   :poins 20}]
+   :points 20}]
  :Category4
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]
-   :poins 30}]
+   :points 30}]
  :Category5
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]
-   :poins 40}]
+   :points 40}]
  :Category6
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]
-   :poins 50}]
+   :points 50}]
  :Category7
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]}]

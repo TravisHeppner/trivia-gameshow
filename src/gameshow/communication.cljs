@@ -63,4 +63,4 @@
   (chsk-send! [:gameshow/reset-players]))
 
 (defn score-player [uid]
-  (chsk-send! [:gameshow/score-player]))
+  (chsk-send! [:gameshow/score-player uid]))

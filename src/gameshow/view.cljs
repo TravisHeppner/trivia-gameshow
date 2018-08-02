@@ -76,14 +76,14 @@
       (for [[team players] (group-by (comp :team second) players)
             [uid {:keys [points username team active admin]}] players]
         ^{:key uid}
-        (if (or (and active (not admin)) (admin? my-uid world))
+        (if (or (and active (not admin)))
           [:li {:class "list-group-item col-xs-2 text-right"
                 :style {:height           "30px"
                         :padding          "3px 5px"
                         :color            "#ffffff"
                         :background-color (team->color team)}}
            (if (admin? my-uid world)
-             [:button {:on-click (fn [_] (communication/score uid))} "score"])
+             [:button {:on-click (fn [_] (communication/score-player uid))} "score"])
            [:font {:size 1} (first (string/split username #"@")) " "]
            [:span {:class "badge badge-primary badge-pill"} points]])))]])
 
@@ -123,15 +123,15 @@
 (defn admin-tools [{:keys [uid username team world] :as app}]
   (if (admin? uid world)
     [:div
-     [:button (cond-> {:on-click (fn [_] (communication/reset-questions))
-                       :type     :button
-                       :class    "btn btn-primary"
-                       :style    {:size 20}})
+     [:button {:on-click (fn [_] (communication/reset-questions))
+               :type     :button
+               :class    "btn btn-primary"
+               :style    {:size 20}}
       "Reset questions"]
-     [:button (cond-> {:on-click (fn [_] (communication/reset-players))
-                       :type     :button
-                       :class    "btn btn-primary"
-                       :style    {:size 20}})
+     [:button {:on-click (fn [_] (communication/reset-players))
+               :type     :button
+               :class    "btn btn-primary"
+               :style    {:size 20}}
       "Reset players"]]
     [:h1 "Anime trivia gameshow!!"]))
 

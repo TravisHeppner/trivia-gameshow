@@ -91,5 +91,6 @@
 
 (defn score-player [uid]
   (dosync
-    (let [points (or (:current-question world) 1)]
+    (let [points (or (get-in @world [:current-question :points]) 1)]
+      (timbre/info "scoring with " points " points")
       (alter world update-in [:players uid :points] #(+ points %)))))
