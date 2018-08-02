@@ -132,8 +132,25 @@
                :type     :button
                :class    "btn btn-primary"
                :style    {:size 20}}
-      "Reset players"]]
+      "Reset players"]
+     [:button {:type "button" :class "btn btn-primary" :data-toggle "modal" :data-target "#ScoreModal"}
+      "Score question"]]
     [:h1 "Anime trivia gameshow!!"]))
+
+(defn answer-scoring [{:keys [uid username team world] :as app}]
+  [:div "thing is here!!!"
+   [:div {:class "modal fade" :id "ScoreModal" :tabindex "-1" :role "dialog" :aria-labelledby "ScoreModalLabel" :aria-hidden false}
+    [:div {:class "modal-dialog" :role "document"}
+     [:div {:class "modal-content"}
+      [:div {:class "modal-header"}
+       [:h5 {:class "modal-title" :id "ScoreModalLabel"} "Scoring page"]
+       [:button {:type "button" :class "close" :data-dismiss "modal" :aria-label "Close"}
+        [:span {:aria-hidden false} "&times;"]]]
+      [:div {:class "modal-body"}
+       [:p "see scores here!!"]]
+      [:div {:class "modal-footer"}
+       [:button {:type "button" :class "btn btn-secondary" :data-dismiss "modal"} "Close"]
+       [:button {:type "button" :class "btn btn-primary"} "Submit Scoring"]]]]]])
 
 (defn main []
   [:div.content
@@ -144,5 +161,6 @@
     [admin-tools @model/app-state]
     [login-form]
     [board @model/app-state]
+    [answer-scoring @model/app-state]
     [:p {:style {:inline true}} "Multiplayer - invite your friends."]
     [:p "Join by going to KNCAGameShow.herokuapp.com/"]]])
