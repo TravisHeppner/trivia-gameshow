@@ -58,10 +58,24 @@
     (timbre/info "Respawn event: " uid event)
     (model/enter-game :uid uid :in-game? true)))
 
+(defmethod event :gameshow/reset-questions [{:as ev-msg :keys [event uid ?data]}]
+  (do
+    (timbre/info "reset questions event: " uid event)
+    (model/reset-questions)))
+
+(defmethod event :gameshow/reset-players [{:as ev-msg :keys [event uid ?data]}]
+  (do
+    (timbre/info "reset players event: " uid event)
+    (model/reset-players)))
+
 (defmethod event :gameshow/select-question [{:keys [?data] :as ev-msg}]
   (do
     (timbre/info "select-question event: " ?data)
     (model/select-question ?data)))
+(defmethod event :gameshow/score-player [{:keys [uid :as ev-msg]}]
+  (do
+    (timbre/info "scoring player" uid)
+    (model/score-player uid)))
 
 (defmethod event :chsk/uidport-open [{:keys [uid client-id]}]
   (do

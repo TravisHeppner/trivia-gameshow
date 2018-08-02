@@ -1,9 +1,40 @@
-{:test-questions
+{:Category1
  [{:question "What is the average flightspeed of a swallow?"
    :picture  "monty-python.jgp"
-   :answers  ["African" "European"]}
+   :answers  ["African" "European"]
+   :points 10}
   {:question "What is the meanin to life the universe and everything?"
-   :answers  ["42"]}]
- :more-questions
+   :answers  ["42"]
+   :points 42}]
+ :Category2
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]
+   :poins 10}]
+ :Category3
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]
+   :poins 20}]
+ :Category4
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]
+   :poins 30}]
+ :Category5
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]
+   :poins 40}]
+ :Category6
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]
+   :poins 50}]
+ :Category7
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]}]
+ :Category8
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]}]
+ :Category9
+ [{:question "whoeunthaosenuth "
+   :answers  ["eoutnshaosenuth"]}]
+ :Category10
  [{:question "whoeunthaosenuth "
    :answers  ["eoutnshaosenuth"]}]}

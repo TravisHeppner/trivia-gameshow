@@ -12,6 +12,8 @@
          (ref {:players   {}
                :questions (clojure.edn/read-string (slurp quiz-resource))}))
 
+(defn reset-questions [] (dosync (alter world assoc-in [:questions](clojure.edn/read-string (slurp quiz-resource)))))
+(defn reset-players [] (dosync (alter world assoc :players {})))
 
 (def colors
   #{"#181818" "#282828" "#383838" "#585858"
@@ -37,29 +39,36 @@
 (defn next-uid [{:keys [params]}]
   (client-uid (:client-id params)))
 
-(defn new-player [world uid username team in-game?]
-  (let [points 3]
-    (-> world
-        (assoc-in [:players uid] {:points   points
-                                  :username username
-                                  :team     team
-                                  :active   in-game?}))))
+(defn new-player [world uid username team admin in-game?]
+  (let [points 0]
+    (assoc-in world [:players uid] {:points   points
+                                    :username username
+                                    :team     team
+                                    :admin    admin
+                                    :active   in-game?})))
 
 (defn enter-game
   [& {:keys [uid in-game?]}]
   (do
     (println uid "entering game")
     (dosync (alter world new-player uid
-                   (if-let [{:keys [points username team]} (get-in @world [:players uid])]
+                   (if-let [{:keys [points username team admin]} (get-in @world [:players uid])]
                      username
                      "Unknown")
-                   (if-let [{:keys [points username team]} (get-in @world [:players uid])]
+                   (if-let [{:keys [points username team admin]} (get-in @world [:players uid])]
                      team
                      "Unknown")
+                   (if-let [{:keys [points username team admin]} (get-in @world [:players uid])]
+                     admin
+                     false)
                    in-game?))))
 
 (defn username [uid username]
-  (dosync (alter world assoc-in [:players uid :username] username)))
+  (dosync
+    (alter world assoc-in [:players uid :username] username)
+    (when (#{"admin-master"} username)
+      (alter world assoc-in [:players uid :admin] true)
+      (timbre/info "admin logged in: " @world))))
 
 (defn team [uid team]
   (dosync
@@ -79,3 +88,8 @@
     (dosync
       (alter world update-in [:questions category] rest)
       (alter world assoc :current-question (first questions)))))
+
+(defn score-player [uid]
+  (dosync
+    (let [points (or (:current-question world) 1)]
+      (alter world update-in [:players uid :points] #(+ points %)))))

@@ -20,7 +20,8 @@
             :z-index 1}}
    (if (model/in-game?)
      [:h1]
-     [:h1
+     [:div {:class "jumbotron"}
+      [:h1 {:class "display-4"} "Select name and team!"]
       [:form
        {:on-submit
         (fn [e]
@@ -30,16 +31,19 @@
           (communication/send-username)
           (communication/send-team)
           (communication/respawn))}
-       [:label "Name:"]
-       [:input
-        {:type "text"
-         :name "username"
-         :auto-focus "autofocus"
-         :default-value (:username @model/app-state)
-         :style {:font-size "0.9em"}}]
-       [:div
+
+       [:div {:class "form-group"}
+        [:label "Name"]
+        [:input
+         {:type          "text"
+          :name          "username"
+          :auto-focus    "autofocus"
+          :class "form-control"
+          :default-value (:username @model/app-state)
+          :style         {:font-size "0.9em"}}]]
+       [:div {:class "col-xs-2"}
         "Team:"
-        [:select {:name "team"}
+        [:select {:name "team" :class "form-control form-control-sm" :text-align "center" }
          [:option "team 1"]
          [:option "team 2"]]]
        " "
@@ -49,8 +53,10 @@
        [:br]
        [:br]]])])
 
-(defn get-active [[uid {:keys[points username team active]}]]
+(defn get-active [[uid {:keys[points username team active admin]}]]
   [active (string/lower-case username)])
+
+(defn admin? [uid world] (-> world :players (get uid) :admin boolean))
 
 (defn team->color [team]
   (as-> team x
@@ -62,27 +68,24 @@
 
 (defn scores [{{players :players :as world} :world my-uid :uid username :username}]
   [:div
-   {:style {:position "relative"
-            :float "right"
-            :height "0"}}
-   [:table
-    [:thead
-     [:tr
-      [:th ]
-      [:th (str "Players" )]
-      [:th ]]]
-    [:tbody
-     (doall
-       (for [[team players] (group-by (comp :team second) players)
-             [uid {:keys [points username team active]}] players]
-         ^{:key uid}
-         (if active
-           [:tr
-            [:td.number points]
-            [:td team]
-            [:td {:style {:color            "#ffffff"
-                          :background-color (team->color team)}}
-             (first (string/split username #"@"))]])))]]])
+   {:class "sidenav"}
+   [:ul {:padding "0px 0px"}
+    [:p " "] [:p " "]
+    [:p (str "Players")]
+    (doall
+      (for [[team players] (group-by (comp :team second) players)
+            [uid {:keys [points username team active admin]}] players]
+        ^{:key uid}
+        (if (or (and active (not admin)) (admin? my-uid world))
+          [:li {:class "list-group-item col-xs-2 text-right"
+                :style {:height           "30px"
+                        :padding          "3px 5px"
+                        :color            "#ffffff"
+                        :background-color (team->color team)}}
+           (if (admin? my-uid world)
+             [:button {:on-click (fn [_] (communication/score uid))} "score"])
+           [:font {:size 1} (first (string/split username #"@")) " "]
+           [:span {:class "badge badge-primary badge-pill"} points]])))]])
 
 ;(defn sound-track []
 ;  [:div
@@ -95,7 +98,7 @@
 ;   [:div "Ahrix - Nova [NCS Release]"]])
 
 (defn board [{:keys [uid username team world] :as app}]
-  [:div
+  [:div {:class "main"}
    [:p " "][:p " "]
    (for [[category-prompt questions :as category] (:questions world)]
      [:button (cond-> {:on-click (fn [_] (communication/select-question category))
@@ -103,7 +106,9 @@
                        :class    "btn btn-primary"
                        :style    {:size 20}}
                       (= 0 (count questions)) (assoc :disabled true :class "btn btn-secondary"))
-      (name category-prompt)])])
+      (name category-prompt)
+      ])
+   [:div (str world)]])
 
 (defn testing [{:keys [uid username team world] :as app}]
   [:div
@@ -115,16 +120,29 @@
    [:p (str (:current-question world))]
    [:div (str app)]])
 
+(defn admin-tools [{:keys [uid username team world] :as app}]
+  (if (admin? uid world)
+    [:div
+     [:button (cond-> {:on-click (fn [_] (communication/reset-questions))
+                       :type     :button
+                       :class    "btn btn-primary"
+                       :style    {:size 20}})
+      "Reset questions"]
+     [:button (cond-> {:on-click (fn [_] (communication/reset-players))
+                       :type     :button
+                       :class    "btn btn-primary"
+                       :style    {:size 20}})
+      "Reset players"]]
+    [:h1 "Anime trivia gameshow!!"]))
+
 (defn main []
   [:div.content
-   [:h1 "Anime trivia gameshow!!" ]
-   [:center
-    ; [sound-track]
+      ; [sound-track]
+   [scores @model/app-state]
+   ;[testing @model/app-state]
+   [:div {:class "main"}
+    [admin-tools @model/app-state]
     [login-form]
-    [scores @model/app-state]
-    [testing @model/app-state]
-
     [board @model/app-state]
     [:p {:style {:inline true}} "Multiplayer - invite your friends."]
-    [:p "Join by going to 192.168.1.108:3000"]
-    ]])
+    [:p "Join by going to KNCAGameShow.herokuapp.com/"]]])

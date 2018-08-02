@@ -55,3 +55,12 @@
 
 (defn respawn []
   (chsk-send! [:gameshow/respawn]))
+
+(defn reset-questions []
+  (chsk-send! [:gameshow/reset-questions]))
+
+(defn reset-players []
+  (chsk-send! [:gameshow/reset-players]))
+
+(defn score-player [uid]
+  (chsk-send! [:gameshow/score-player]))
