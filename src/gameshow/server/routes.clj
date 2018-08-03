@@ -77,6 +77,22 @@
   (do
     (timbre/info "scoring player" ?data)
     (model/score-player ?data)))
+(defmethod event :gameshow/buzzer [{:keys [uid] :as ev-msg}]
+  (model/buzzer uid))
+(defmethod event :gameshow/buzzer-done [ev-msg]
+  (model/buzzer-done))
+
+(defmethod event :gameshow/start-scoring [ev-msg]
+  (do (timbre/info "started scoring")
+      (model/start-scoring)))
+(defmethod event :gameshow/end-scoring [ev-msg]
+  (do (timbre/info "ended scoring")
+      (model/end-scoring)))
+
+(defmethod event :gameshow/send-answer [{:as ev-msg :keys [event uid ?data]}]
+  (do
+    (timbre/info "send-answer event: " uid event ?data)
+    (model/answer uid ?data)))
 
 (defmethod event :chsk/uidport-open [{:keys [uid client-id]}]
   (do
@@ -113,3 +129,4 @@
   (defonce ticker-thread
     (doto (Thread. ticker)
       (.start))))
+

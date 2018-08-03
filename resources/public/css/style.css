@@ -20,14 +20,6 @@ h1 {
   text-align: center;
 }
 
-button {
-  font-size: 100%;
-  background-color: #A16946;
-  color: #F8F8F8;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px #888888;
-}
-
 .number {
   text-align: right;
 }

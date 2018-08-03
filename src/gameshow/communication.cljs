@@ -62,5 +62,19 @@
 (defn reset-players []
   (chsk-send! [:gameshow/reset-players]))
 
-(defn score-player [uid]
-  (chsk-send! [:gameshow/score-player uid]))
+(defn score-player [uid scored?]
+  (if scored?
+    (chsk-send! [:gameshow/score-player uid])))
+
+(defn start-scoring []
+  (chsk-send! [:gameshow/start-scoring]))
+(defn end-scoring []
+  (chsk-send! [:gameshow/end-scoring]))
+
+(defn send-answer [answer]
+  (chsk-send! [:gameshow/send-answer answer]))
+(defn buzzer []
+  (chsk-send! [:gameshow/buzzer]))
+(defn buzzer-done []
+  (chsk-send! [:gameshow/buzzer-done]))
+

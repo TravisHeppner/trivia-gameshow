@@ -12,7 +12,10 @@
          (ref {:players   {}
                :questions (clojure.edn/read-string (slurp quiz-resource))}))
 
-(defn reset-questions [] (dosync (alter world assoc-in [:questions](clojure.edn/read-string (slurp quiz-resource)))))
+(defn reset-questions []
+  (dosync
+    (alter world assoc-in [:questions](clojure.edn/read-string (slurp quiz-resource)))
+    (alter world dissoc :current-question)))
 (defn reset-players [] (dosync (alter world assoc :players {})))
 
 (def colors
@@ -42,7 +45,7 @@
 (defn new-player [world uid username team admin in-game?]
   (let [points 0]
     (assoc-in world [:players uid] {:points   points
-                                    :username username
+                                    :username (if (and username (< 15 (count username))) (subs username 0 15) username)
                                     :team     team
                                     :admin    admin
                                     :active   in-game?})))
@@ -89,8 +92,29 @@
       (alter world update-in [:questions category] rest)
       (alter world assoc :current-question (first questions)))))
 
+(defn answer [uid answer]
+  (dosync
+    (alter world assoc-in [:players uid :answer] answer)))
+
+(defn remove-player-answer* [world uid]
+  (update-in world [:players uid] #(dissoc % :answer)))
 (defn score-player [uid]
   (dosync
     (let [points (or (get-in @world [:current-question :points]) 1)]
       (timbre/info "scoring with " points " points")
-      (alter world update-in [:players uid :points] #(+ points %)))))
+      (alter world update-in [:players uid :points] #(+ points %))
+      (alter world remove-player-answer* uid))))
+(defn buzzer [uid]
+  (dosync
+    (alter world assoc :buzzer uid)
+    (alter world assoc-in [:players uid :answer] "Buzzed in.")))
+(defn buzzer-done []
+  (dosync (alter world dissoc :buzzer)))
+
+(defn start-scoring []
+  (dosync (alter world assoc :scoring? true)))
+
+(defn end-scoring []
+  (dosync
+    (alter world dissoc :scoring?)
+    (alter world dissoc :current-question)))

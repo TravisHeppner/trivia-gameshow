@@ -1,40 +1,95 @@
-{:Category1
- [{:question "What is the average flightspeed of a swallow?"
-   :picture  "monty-python.jgp"
-   :answers  ["African" "European"]
-   :points 10}
-  {:question "What is the meanin to life the universe and everything?"
-   :answers  ["42"]
-   :points 42}]
- :Category2
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]
-   :points 10}]
- :Category3
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]
-   :points 20}]
- :Category4
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]
-   :points 30}]
- :Category5
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]
-   :points 40}]
- :Category6
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]
-   :points 50}]
- :Category7
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]}]
- :Category8
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]}]
- :Category9
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]}]
- :Category10
- [{:question "whoeunthaosenuth "
-   :answers  ["eoutnshaosenuth"]}]}
+{
+ :name-that-weapon
+ [{:question "What is the name of this weapon (or the anime it's from)?"
+   :image    ""
+   :answer   [""]
+   :points 1}
+  {:question "What is the name of one of these weapons (or the anime it's from)?"
+   :image "https://image.ibb.co/gEn8GK/elucidator_sword_and_dark_repulser_sword_sao_by_kksjason2001_d8d6a6s.jpg"
+   :answer ["elucidator" "dark repulser" "sword art online" "sao"]
+   :points 1}
+  ;https://image.ibb.co/kjBFVe/Juuzous_Jason_Scythe_Tokyo_Ghoul.jpg
+  ;https://image.ibb.co/ifsTiz/zangetsu.jpg
+  ;https://image.ibb.co/bu6hAe/Caster.jpg
+  ;https://image.ibb.co/nySpqe/dominator.jpg
+  ]
+
+
+
+ :summary-in-four-words
+ [{:question "Motorcycle girl on trip"
+   :answers  ["kino's journey"]
+   :points   1}
+  {:question "Fox ninja.  Believe it!"
+   :image    nil
+   :answers  ["naruto"]
+   :points   1}
+  {:question "Two children explore hole"
+   :answers  ["made in abyss"]
+   :points   2}
+  {:question "ainu & immortal hunt tatoos"
+   :answers  ["golden kamuy" "golden kamui"]
+   :points   3}
+  {:question "boy yells without magic"
+   :image    nil
+   :answers  ["black clover"]
+   :points   4}
+  {:question "third thief steals stuff"
+   :image    nil
+   :answers  ["lupin the third" "lupin III"]
+   :points   5}
+  {:question "Monte Christo in space"
+   :image    nil
+   :answers  ["gankutsuou"]
+   :points   6}]
+
+
+
+ ;:category-please-replace
+ ;[ {:question ""
+ ;   :image nil
+ ;   :answers  [""]
+ ;   :points   1}
+ ; {:question ""
+ ;  :image nil
+ ;  :answers  [""]
+ ;  :points   2}
+ ; {:question ""
+ ;  :image nil
+ ;  :answers  [""]
+ ;  :points   3}
+ ; {:question ""
+ ;  :image nil
+ ;  :answers  [""]
+ ;  :points   4}
+ ; {:question ""
+ ;  :image nil
+ ;  :answers  [""]
+ ;  :points   5}
+ ; {:question ""
+ ;  :image nil
+ ;  :answers  [""]
+ ;  :points   6}]
+
+
+
+ ;{:question ""
+ ; :image nil
+ ; :answers  [""]
+ ; :points   1}
+
+ ;:Category1
+ ;[{:question "What is the average flightspeed of a swallow?"
+ ;  :image  "https://imgc.allpostersimages.com/img/print/u-g-Q12PD4N0.jpg?w=550&h=550&p=0"
+ ;  :answers  ["African" "European"]
+ ;  :points 10}
+ ; {:question "What is the meanin to life the universe and everything?"
+ ;  :answers  ["42"]
+ ;  :points 42}]
+
+
+
+ :learning-to-play
+ [{:question "The question will be here.  Below there is a buzzer to ring in.  And a text box to submit an answer."
+   :answers  ["there is at least one answer" "maybe two" "but it will always be in lower case"]
+   :points   1}]}
