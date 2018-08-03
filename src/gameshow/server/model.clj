@@ -82,7 +82,7 @@
   (do
     (println "removing player " uid)
     (dosync
-      (let [points (get-in world [:players uid :points])]
+      (let [points (get-in @world [:players uid :points])]
         (if (and points (< 0 points))
           (alter world assoc-in [:players uid :active] false)
           (alter world update :players #(dissoc % uid)))))))

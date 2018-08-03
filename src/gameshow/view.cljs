@@ -254,7 +254,7 @@
     [board @model/app-state]
     [answer-scoring @model/app-state]
     [final-scores @model/app-state]
-    [testing @model/app-state]
+    ;[testing @model/app-state]
     [:div {:class "col-md-9 offset-md-1"}
      [:p {:style {:inline true}} "Multiplayer - invite your friends."]
      [:p "Join by going to KNCAGameShow.herokuapp.com"]]]])
