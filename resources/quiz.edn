@@ -16,7 +16,7 @@
 
 
 
- :summary-in-four-words
+ :four-word-summary
  [{:question "Motorcycle girl on trip"
    :answers  ["kino's journey"]
    :points   1}

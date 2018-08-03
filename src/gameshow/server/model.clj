@@ -78,12 +78,14 @@
     (timbre/info "Changeing team " team)
     (alter world assoc-in [:players uid :team] team)))
 
-(defn remove-player* [world uid]
-  (update world :players #(dissoc % uid)))
 (defn remove-player [uid]
   (do
     (println "removing player " uid)
-    (dosync (alter world remove-player* uid))))
+    (dosync
+      (let [points (get-in world [:players uid :points])]
+        (if (and points (< 0 points))
+          (alter world assoc-in [:players uid :active] false)
+          (alter world update :players #(dissoc % uid)))))))
 
 (defn select-question [[category questions]]
   (do
