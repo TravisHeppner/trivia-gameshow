@@ -1,73 +1,312 @@
 {
  :name-that-weapon
- [{:question "What is the name of this weapon (or the anime it's from)?"
-   :image    ""
-   :answer   [""]
-   :points 1}
-  {:question "What is the name of one of these weapons (or the anime it's from)?"
-   :image "https://image.ibb.co/gEn8GK/elucidator_sword_and_dark_repulser_sword_sao_by_kksjason2001_d8d6a6s.jpg"
-   :answer ["elucidator" "dark repulser" "sword art online" "sao"]
-   :points 1}
-  ;https://image.ibb.co/kjBFVe/Juuzous_Jason_Scythe_Tokyo_Ghoul.jpg
-  ;https://image.ibb.co/ifsTiz/zangetsu.jpg
-  ;https://image.ibb.co/bu6hAe/Caster.jpg
-  ;https://image.ibb.co/nySpqe/dominator.jpg
-  ]
+          [
+           {:question "What is the name of one of these weapons (or the anime it's from)?"
+            :image    "https://image.ibb.co/gEn8GK/elucidator_sword_and_dark_repulser_sword_sao_by_kksjason2001_d8d6a6s.jpg"
+            :answers   ["elucidator" "dark repulser" "sword art online" "sao"]
+            :points   1}
+           {:question "What is the name of this weapon (or the anime it's from)?"
+            :image    "https://image.ibb.co/ifsTiz/zangetsu.jpg"
+            :answers  ["bleach" "zangetsu"]
+            :points   2}
+           {:question "What is the name of this weapon (or the anime it's from)?"
+            :image    "https://image.ibb.co/bu6hAe/Caster.jpg"
+            :answers  ["caster" "caster gun" "outlaw star"]
+            :points   3}
+           {:question "What is the name of this weapon (or the anime it's from)?"
+            :image    "https://image.ibb.co/bP02Tz/dominator_psychopass.gif"
+            :answers  ["dominator" "psycho-pass" "psycho pass"]
+            :points   3}
+           {:question "What is the name of this weapon (or the anime it's from)?"
+            :image    "https://image.ibb.co/kjBFVe/Juuzous_Jason_Scythe_Tokyo_Ghoul.jpg"
+            :answers  ["tokyo ghoul" "juuzous jason scythe"]
+            :points   5}
+           {:question "What is the name of this weapon (or the anime it's from)?"
+            :image    "https://image.ibb.co/mi9eqe/berserk_dragonslayer.jpg"
+            :answers   ["berserk" "dragon slayer"]
+            :points   5}]
 
 
 
  :four-word-summary
- [{:question "Motorcycle girl on trip"
-   :answers  ["kino's journey"]
-   :points   1}
-  {:question "Fox ninja.  Believe it!"
-   :image    nil
-   :answers  ["naruto"]
-   :points   1}
-  {:question "Two children explore hole"
-   :answers  ["made in abyss"]
-   :points   2}
-  {:question "ainu & immortal hunt tatoos"
-   :answers  ["golden kamuy" "golden kamui"]
-   :points   3}
-  {:question "boy yells without magic"
-   :image    nil
-   :answers  ["black clover"]
-   :points   4}
-  {:question "third thief steals stuff"
-   :image    nil
-   :answers  ["lupin the third" "lupin III"]
-   :points   5}
-  {:question "Monte Christo in space"
-   :image    nil
-   :answers  ["gankutsuou"]
-   :points   6}]
+          [{:question "Motorcycle girl on trip"
+            :answers  ["kino's journey"]
+            :points   1}
+           {:question "Fox ninja.  Believe it!"
+            :image    nil
+            :answers  ["naruto"]
+            :points   1}
+           {:question "Children explore deep hole."
+            :answers  ["made in abyss"]
+            :points   2}
+           {:question "Ainu & immortal hunt tatoos"
+            :answers  ["golden kamuy" "golden kamui"]
+            :points   3}
+           {:question "Boy yells without magic."
+            :image    nil
+            :answers  ["black clover"]
+            :points   4}
+           {:question "Third thief steals stuff."
+            :image    nil
+            :answers  ["lupin the third" "lupin III"]
+            :points   5}
+           {:question "Monte Christo in space"
+            :image    nil
+            :answers  ["gankutsuou"]
+            :points   6}]
+
+ :crossovers
+          [
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/hLDEqe/princess_moon.jpg"
+            :answers  ["disney princesses" "sailor moon"]
+            :points   1}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/n3Ub3z/uqIdbjQ.jpg"
+            :answers  ["pokemon" "evangelion"]
+            :points   1}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/ipmCbK/fairly_odd_ninja.jpg"
+            :answers  ["fairly odd parrents" "naruto"]
+            :points   2}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/iibpOz/onepiecexhunterxhunter.jpg"
+            :answers  ["one piece" "hunterxhunter" "hunter x hunter"]
+            :points   3}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/euC7Ae/sample_a6a254569f33461e18f6074d400db4c02a97f040.jpg"
+            :answers  ["coco" "undertale" "under tale"]
+            :points   3}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/f3sUOz/ryu_ball_z.png"
+            :answers  ["street fighter" "dragon ball z"]
+            :points   4}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/f0nJGK/boku_no_akira.jpg"
+            :answers  ["boku no hero acadamia" "my hero acadamia" "akira"]
+            :points   4}
+           {:question "Name the one of the depicted series."
+            :image    "https://image.ibb.co/f5BOiz/sample_b549759ed49fbce650a4a851a98870478414cae1.jpg"
+            :answers  ["hataraku saibo" "cells at work" "jojo" "jojo's bizarre adventure" "jojo kimi no bouken"]
+            :points   4}]
+
+ :mascots [{:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/jFUhbK/Kero_Card_Captur_Sakura.jpg"
+            :answers  ["kero" "cardcaptor sakura"]
+            :points   2}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/gKY8GK/kyubey_magica_madoka.png"
+            :answers  ["kyubey" "puella magi madoka magica" "madoka"]
+            :points   2}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/gaVcAe/Boota_gurren_lagan.jpg"
+            :answers  ["boota" "gurren lagann"]
+            :points   3}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/eTRTGK/ein_cowboy_bebop.png"
+            :answers  ["ein" "cowboy bebop"]
+            :points   3}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/jzM63z/Plue_Rave.png"
+            :answers  ["plue" "rave master" "fairy tail"]
+            :points   3}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/nD1TGK/ryo_ohki_tenshi_muyo.jpg"
+            :answers  ["ryo-ohki" "tenshi muyo"]
+            :points   3}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/fxzR3z/Monokuma_Danganropa.jpg"
+            :answers  ["monokuma" "danganronpa"]
+            :points   3}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/fXU4qe/kirara_inuyasha.jpg"
+            :answers  ["kirara" "inuyasha"]
+            :points   4}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/cmUtiz/Pen_Pen_evangelion.png"
+            :answers  ["pen pen" "pen^2" "evangelion"]
+            :points  4}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/chYm3z/moffle_amagi_brilliant_park.png"
+            :answers  ["moffle" "amagi brilliant park"]
+            :points   4}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/gpceOz/Bonta_kun_full_metal_panic.jpg"
+            :answers  ["bonta" "bonta-kun" "full metal panic"]
+            :points   4}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/kSAcAe/Black_Hayate_full_metal_alchemist.jpg"
+            :answers  ["black hayate" "full metal alchemist"]
+            :points   5}
+           {:question "Name the mascot (or series this comes from)"
+            :image    "https://image.ibb.co/dAfcAe/haro_gundam_by_gregroldan_d4aexna.jpg"
+            :answers  ["haro" "gundam" ]
+            :points   5}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/kUY8GK/Nyanko_sensei_Natsume_s_Book_of_Friends.jpg"
+            :answers ["nyanko" "nyanko sensei" "natsume's book of friends"]
+            :points 5}
+           {:question "Name the mascot (or anime this comes from)"
+            :image    "https://image.ibb.co/enmTGK/Mokona.jpg"
+            :answers  ["mokona" "magic knight rayearth" "tsubasa: reservoir chronicle" "xxxholic"]
+            :points   5}]
+
+ :mecha   [{:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/fEXEae/strelitzia.png"
+            :answers  ["strelitzia" "darling in the franxx"]
+            :points   1}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/bQbwoz/Tachikoma_ghost_in_the_shell.jpg"
+            :answers  ["tachikoma" "ghost in the shell"]
+            :points   2}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/dzap8z/big_o.jpg"
+            :answers  ["big o"]
+            :points   2}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/gQSrMK/eva_unit_1_by_argoncero.jpg"
+            :answers  ["eva unit 01" "eva 01" "evangelion"]
+            :points   2}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/jC7rMK/liger_zero_zoids.gif"
+            :answers  ["liger zero" "zoids"]
+            :points   2}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/hsgwoz/nivage_eureka_7.jpg"
+            :answers  ["nirvage" "eureka 7"]
+            :points   2}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/bBdy1K/gundam.jpg"
+            :answers  ["gundam" "mobile suit gundam"]
+            :points   3}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/f3ynve/valkyrie_macross.jpg"
+            :answers  ["valkyrie" "macross" "robotech"]
+            :points   4}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/eRYboz/escaflowne.jpg"
+            :answers  ["escaflowne"]
+            :points   5}
+           {:question "Name the mecha from this anime (or the anime)."
+            :image "https://image.ibb.co/moUGoz/c9fc85432dc0567e0be1709864044cc0_robots_fantasy_rpg.jpg"
+            :answers  ["gunbuster"]
+            :points   5}]
+
+ :villans
+          [ {:question "Name the villan (or the anime it comes from)"
+             :image "https://image.ibb.co/chA9rK/annie_attack_on_titan.jpg"
+             :answers  ["annie" "female titan" "attack on titan"]
+             :points   1}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/iCuPQe/blacklady_sailor_moon.gif"
+            :answers  ["black lady" "sailor moon"]
+            :points   2}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/nvpPQe/charolette_madoka_magica.jpg"
+            :answers  ["charolette" "puella magi madoka magica" "madoka"]
+            :points   2}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/kPr4Qe/D_Grayman.png"
+            :answers  ["the earl" "d-grayman"]
+            :points   4}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/dx5W5e/dio_brando_jojo.jpg"
+            :answers  ["dio" "dio brando" "jojo" "jojo's bizarre adventure" "jojo kimi no bouken"]
+            :points   1}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/buPPQe/jiren_dbz.jpg"
+            :answers  ["jiren" "dragon ball super"]
+            :points   2}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/drv9rK/pride_fma.jpg"
+            :answers  ["pride" "full metal alchemist"]
+            :points   2}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/f5BhBK/team_rocket_pokemon.png"
+            :answers  ["jessie" "james" "meowth" "team rocket" "pokemon"]
+            :points   1}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/gpAaWK/the_major_hellsing.jpg"
+            :answers  ["the major" "hellsing"]
+            :points   4}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/ci14Qe/Toguro_yuyu_hakosho.png"
+            :answers  ["toguro" "yuyu hakusho"]
+            :points   4}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/fgFW5e/Tomura_Shigaraki_vilians.png"
+            :answers  ["tomura shigaraki" "my hero academia" "boku hero academia"]
+            :points   3}
+           {:question "Name the villan (or the anime it comes from)"
+            :image "https://image.ibb.co/nRmtJz/Yami_Marik_yugio.jpg"
+            :answers  ["yami marik" "marik" "yugio"]
+            :points   2}]
+
+ :sparkles
+          [ {:question "name the sparkling character (or anime they come from)"
+             :image "https://image.ibb.co/mTb7BK/armstrong_fma.jpg"
+             :answers  ["armstrong" "full metal alchemist"]
+             :points   1}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/dqrJJz/joseph_ceasar_jojo_s_bizarre_adventure.jpg"
+            :answers  ["joseph" "ceasar" "jojo" "jojo's bizarre adventure" "jojo kimi no bouken"]
+            :points   1}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/bweSBK/osumatsusan.jpg"
+            :answers  ["osumatsu-san"]
+            :points   2}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/bDPG5e/rei_sailor_moon.jpg"
+            :answers  ["rei" "sailor moon"]
+            :points   2}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/cBapQe/sakamoto.png"
+            :answers  ["sakamoto"]
+            :points   4}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/n8o9Qe/utena.gif"
+            :answers  ["utena" "revolutionary girl utena"]
+            :points   5}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/bLQZrK/weis_dragon_ball_super.jpg"
+            :answers  ["weis" "dragon ball super"]
+            :points   3}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/jHa0WK/Yuga_aoyama_boko_no_hero_acadamia.png"
+            :answers  ["yuga aoyama" "boku no hero acadamia" "my hero acadamia"]
+            :points   2}
+           {:question "name the sparkling character (or anime they come from)"
+            :image "https://image.ibb.co/nmCsdz/yui_k_on.jpg"
+            :answers  ["yui" "k-on"]
+            :points   3}]
+ 
+
 
 
 
  ;:category-please-replace
  ;[ {:question ""
- ;   :image nil
+ ;   :image ""
  ;   :answers  [""]
  ;   :points   1}
  ; {:question ""
- ;  :image nil
+ ;  :image ""
  ;  :answers  [""]
  ;  :points   2}
  ; {:question ""
- ;  :image nil
+ ;  :image ""
  ;  :answers  [""]
  ;  :points   3}
  ; {:question ""
- ;  :image nil
+ ;  :image ""
  ;  :answers  [""]
  ;  :points   4}
  ; {:question ""
- ;  :image nil
+ ;  :image ""
  ;  :answers  [""]
  ;  :points   5}
  ; {:question ""
- ;  :image nil
+ ;  :image ""
  ;  :answers  [""]
  ;  :points   6}]
 
@@ -90,6 +329,6 @@
 
 
  :learning-to-play
- [{:question "The question will be here.  Below there is a buzzer to ring in.  And a text box to submit an answer."
-   :answers  ["there is at least one answer" "maybe two" "but it will always be in lower case"]
-   :points   1}]}
+          [{:question "The question will be here.  Below there is a buzzer to ring in.  And a text box to submit an answer."
+            :answers  ["there is at least one answer" "maybe two" "but it will always be in lower case"]
+            :points   1}]}

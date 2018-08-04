@@ -257,4 +257,5 @@
     ;[testing @model/app-state]
     [:div {:class "col-md-9 offset-md-1"}
      [:p {:style {:inline true}} "Multiplayer - invite your friends."]
-     [:p "Join by going to KNCAGameShow.herokuapp.com"]]]])
+     [:p "Join by going to KNCAGameShow.herokuapp.com"]
+     [:p "Submit questions to anime-trivia-gameshow@trivia_anime  on twitter."]]]])
